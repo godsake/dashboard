@@ -1,6 +1,8 @@
 # Spring 4 MVC Example (Java Configuration) + Maven
 Template example for Spring 4 MVC + JSP View with pure Java Configuration (no XML), using Maven build tool.
 
+Satring point for the DashBoard project
+
 ###1. Technologies
 * Spring 4.3.0.RELEASE
 * Maven 3.3.3
@@ -8,7 +10,8 @@ Template example for Spring 4 MVC + JSP View with pure Java Configuration (no XM
 
 ###2. To Run this project locally
 ```shell
-$ git clone https://github.com/viralpatel/spring4-mvc-example
+$ git clone https://github.com/godsake/dashboard.git
+$ cd dashboard 
 $ mvn tomcat7:run
 ```
 Access ```http://localhost:8080/spring4/hello```
