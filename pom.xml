@@ -81,4 +81,15 @@
             </plugins>
         </pluginManagement>
     </build>
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>nexus</id>
+            <name>intact nexus</name>
+            <url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/content/groups/public/</url>
+            <layout>default</layout>
+        </repository>
+
+    </distributionManagement>
+
 </project>
