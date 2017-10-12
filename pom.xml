@@ -3,7 +3,7 @@
     <groupId>intact.web.dashboard</groupId>
     <artifactId>dashboard</artifactId>
     <packaging>war</packaging>
-    <version>0.0.1</version>
+    <version>0.0.6-SNAPSHOT</version>
     <name>DashBoard Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
@@ -62,16 +62,18 @@
                 <plugin>
                     <groupId>external.atlassian.jgitflow</groupId>
                     <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
                     <configuration>
                         <pushFeatures>true</pushFeatures>
                         <pushHotfixes>true</pushHotfixes>
                         <pushReleases>true</pushReleases>
                         <enableSshAgent>true</enableSshAgent>
+                        <squash>true</squash>
                         <username>${git.user}</username>
                         <password>${git.password}</password>
                         <flowInitContext>
                             <masterBranchName>master</masterBranchName>
-                            <developBranchName>development</developBranchName>
+                            <developBranchName>develop</developBranchName>
                             <featureBranchPrefix>feature-</featureBranchPrefix>
                             <releaseBranchPrefix>release-</releaseBranchPrefix>
                             <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
