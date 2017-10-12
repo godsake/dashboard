@@ -60,7 +60,7 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
-                <plugin>
+                <!--                <plugin>
                     <groupId>external.atlassian.jgitflow</groupId>
                     <artifactId>jgitflow-maven-plugin</artifactId>
                     <configuration>
@@ -78,6 +78,21 @@
                             <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
                             <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
                         </flowInitContext>
+                    </configuration>
+                </plugin>-->
+                <plugin>
+                    <groupId>com.amashchenko.maven.plugin</groupId>
+                    <artifactId>gitflow-maven-plugin</artifactId>
+                    <version>1.7.0</version>
+                    <configuration>
+                        <productionBranch>master</productionBranch>
+                        <developmentBranch>develop</developmentBranch>
+                        <featureBranchPrefix>feature/</featureBranchPrefix>
+                        <releaseBranchPrefix>release/</releaseBranchPrefix>
+                        <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+                        <supportBranchPrefix>support/</supportBranchPrefix>
+                        <versionTagPrefix></versionTagPrefix>
+                        <origin>origin</origin>
                     </configuration>
                 </plugin>
                 <plugin>
