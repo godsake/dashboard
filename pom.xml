@@ -94,7 +94,7 @@
     <distributionManagement>
         <repository>
             <uniqueVersion>false</uniqueVersion>
-            <id>nexus</id>
+            <id>nexus2</id>
             <name>intact nexus</name>
             <url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/repositories/snapshots</url>
             <layout>default</layout>
