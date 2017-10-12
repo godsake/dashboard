@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.viralpatel.spring</groupId>
-    <artifactId>HelloWorld</artifactId>
+    <groupId>intact.web.dashboard</groupId>
+    <artifactId>dashboard</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>HelloWorld Maven Webapp</name>
+    <name>DashBoard Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
         <java-version>1.7</java-version>
@@ -30,17 +30,17 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>HelloWorld</finalName>
+        <finalName>${project.artifactId}</finalName>
         <pluginManagement>
             <plugins>
-                <plugin>
+<!--                <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
                     <configuration>
                         <path>/spring4</path>
                     </configuration>
-                </plugin>			
+                </plugin>			-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
