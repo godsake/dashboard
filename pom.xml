@@ -69,7 +69,7 @@
                         <pushReleases>true</pushReleases>
                         <enableSshAgent>true</enableSshAgent>
                         <squash>true</squash>
-                        <keepBranch>false</keepBranch>
+                        <keepBranch>true</keepBranch>
                         <noReleaseMerge>true</noReleaseMerge>
                         <username>${git.user}</username>
                         <password>${git.password}</password>
