@@ -69,6 +69,8 @@
                         <pushReleases>true</pushReleases>
                         <enableSshAgent>true</enableSshAgent>
                         <squash>true</squash>
+                        <keepBranch>true</keepBranch>
+                        <noReleaseMerge>true</noReleaseMerge>
                         <username>${git.user}</username>
                         <password>${git.password}</password>
                         <flowInitContext>
