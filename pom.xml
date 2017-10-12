@@ -96,19 +96,19 @@
     <distributionManagement>
         <repository>
             <uniqueVersion>false</uniqueVersion>
-            <id>nexus2</id>
+            <id>intact-releases</id>
             <name>intact nexus</name>
             <!--<url>https://prod-nexus-b2eapp.iad.ca.inet:8443/</url>-->
             <!--<url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/content/repositories/releases/</url>-->
             <!--<url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/repositories/snapshots</url>-->
-            <url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/content/repositories/builds/</url>
+            <url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/content/repositories/releases/</url>
             <layout>default</layout>
         </repository>
- <snapshotRepository>
-         <id>Snapshot.repo</id>
-         <name>Your Snapshot Repository</name>
-         <url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/content/repositories/builds/</url>
-    </snapshotRepository>
+        <snapshotRepository>
+            <id>intact-snapshots</id>
+            <name>Your Snapshot Repository</name>
+            <url>https://prod-nexus-b2eapp.iad.ca.inet:8443/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
 
 </project>
