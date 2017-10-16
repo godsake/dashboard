@@ -67,10 +67,10 @@
                         <pushFeatures>true</pushFeatures>
                         <pushHotfixes>true</pushHotfixes>
                         <pushReleases>true</pushReleases>
-                        <enableSshAgent>true</enableSshAgent>
+                     <!--   <enableSshAgent>true</enableSshAgent>
                         <squash>true</squash>
                         <keepBranch>true</keepBranch>
-                        <noReleaseMerge>true</noReleaseMerge>
+                        <noReleaseMerge>false</noReleaseMerge> -->
                         <username>${git.user}</username>
                         <password>${git.password}</password>
                         <flowInitContext>
