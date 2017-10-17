@@ -150,7 +150,7 @@ pipeline {
                 expression {   return BRANCH_NAME.equals('develop')}
             } 
             steps {
-                timeout(time: 15, unit: 'SECONDS') {
+                timeout(time: 10, unit: 'MINUTES') {
                     input(message: 'create a new release?')
                 }
                 echo "release"
