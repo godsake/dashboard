@@ -90,7 +90,7 @@
                     <configuration>
                         <url>http://localhost:8181/manager/text</url>
                         <server>TomcatServer</server>
-                        <path>/${project.artifactId}</path>
+                        <!--<path>/${project.artifactId}</path>-->
                     </configuration>
                 </plugin>
             </plugins>
