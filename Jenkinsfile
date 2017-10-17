@@ -12,7 +12,7 @@ pipeline {
     tools { 
         maven 'Maven 3.5.0' 
         jdk 'jdk7' 
-      //  nodejs 'nodejs_6.9.1'
+        //  nodejs 'nodejs_6.9.1'
         
     }   
     
@@ -114,18 +114,36 @@ pipeline {
             }
         }
     
-        stage('deploy feature to Tomcat'){
+        stage('deploy to feature'){
             when {
                 expression {   return BRANCH_NAME.contains('feature/')}
             } 
                         
             steps{
                 echo "deploy to tomcat"
-                sh "mvn tomcat7:redeploy -Dmaven.tomcat.path=/${BRANCH_NAME}" //  .replace('feature/','/f').replace('_','')}"  
+                sh "mvn tomcat7:redeploy -Dmaven.tomcat.path=/dashboard/${BRANCH_NAME}" //  .replace('feature/','/f').replace('_','')}"  
             
             }
-        
+         
         }
+        
+        
+          stage('deploy to staging'){
+          
+            when {
+                expression {   return BRANCH_NAME.equals('develop')}
+            } 
+            steps{
+                echo "deploy to tomcat"
+                sh "mvn tomcat7:redeploy -Dmaven.tomcat.path=/dashboard/staging" //  .replace('feature/','/f').replace('_','')}"  
+            
+            }
+        }
+        
+        
+  
+        
+        
         stage("Archive Build Output Artifacts"){
           
             steps {
