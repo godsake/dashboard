@@ -128,7 +128,7 @@ pipeline {
         }
         
         
-          stage('deploy to staging'){
+        stage('deploy to staging'){
           
             when {
                 expression {   return BRANCH_NAME.equals('develop')}
@@ -140,8 +140,46 @@ pipeline {
             }
         }
         
-        
+        stage('release'){
+          
+            when {
+                expression {   return BRANCH_NAME.contains('release/')}
+            } 
+            steps {
+                echo "release"
+                        
+                
+                sh 'mvn jgitflow:release-start   -X -Dgit.user=godsake -Dgit.password=qwerty00  '
+              
+               
+               
+             
+            
+                
+            }
+            
+        }
+                
   
+        stage("release-finish") {
+            when {
+                expression {   return BRANCH_NAME.contains('release/')}
+            } 
+          
+            steps {
+                echo "release"
+                        
+                //sh 'mvn  clean install'
+                //   sh 'mvn --batch-mode external.atlassian.jgitflow:jgitflow-maven-plugin:1.0-m5.1:release-start external.atlassian.jgitflow:jgitflow-maven-plugin:1.0-m5.1:release-finish -Dgit.user=godsake -Dgit.password=qwerty00  '
+                sh 'git stash'
+                sh 'mvn jgitflow:release-finish -X -Dgit.user=godsake -Dgit.password=qwerty00 -DkeepBranch=false -DnoReleaseMerge=false -Dsquash=false -DnoTag=false '
+              
+              
+                
+            }
+            
+        }
+        
         
         
         stage("Archive Build Output Artifacts"){
