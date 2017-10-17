@@ -135,9 +135,9 @@ pipeline {
                
             } 
             steps{
-                timeout(time: 15, unit: 'SECONDS') {
-                    input(message: 'Deploy this build to staging?')
-                }
+//                timeout(time: 15, unit: 'SECONDS') {
+//                    input(message: 'Deploy this build to staging?')
+//                }
                 echo "deploy to tomcat"
                 sh "mvn tomcat7:redeploy -Dmaven.tomcat.path=/dashboard/staging" //  .replace('feature/','/f').replace('_','')}"  
             
