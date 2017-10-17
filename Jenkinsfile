@@ -132,8 +132,12 @@ pipeline {
           
             when {
                 expression {   return BRANCH_NAME.equals('develop')}
+               
             } 
             steps{
+                timeout(time: 15, unit: 'SECONDS') {
+                    input(message: 'Deploy this build to staging?')
+                }
                 echo "deploy to tomcat"
                 sh "mvn tomcat7:redeploy -Dmaven.tomcat.path=/dashboard/staging" //  .replace('feature/','/f').replace('_','')}"  
             
@@ -143,9 +147,12 @@ pipeline {
         stage('release'){
           
             when {
-                expression {   return BRANCH_NAME.contains('release/')}
+                expression {   return BRANCH_NAME.equals('develop')}
             } 
             steps {
+                timeout(time: 15, unit: 'SECONDS') {
+                    input(message: 'create a new release?')
+                }
                 echo "release"
                         
                 
@@ -163,7 +170,7 @@ pipeline {
   
         stage("release-finish") {
             when {
-                expression {   return BRANCH_NAME.contains('release/')}
+                expression {   return BRANCH_NAME.equals('develop')}
             } 
           
             steps {
