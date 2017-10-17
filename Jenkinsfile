@@ -12,7 +12,7 @@ pipeline {
     tools { 
         maven 'Maven 3.5.0' 
         jdk 'jdk7' 
-        nodejs 'nodejs_6.9.1'
+      //  nodejs 'nodejs_6.9.1'
         
     }   
     
@@ -21,10 +21,12 @@ pipeline {
         MAVEN_OPTS=" -Xms512m -Xmx2048m -XX:MaxPermSize=512m"  
         PATH = "/home/jenkins/bin:/home/jenkins/bin/autodeploy:$PATH"
         
+        BRANCH_TYPE = "${BRANCH_NAME}"
+        
         skipStage='no'
     }
     
-    
+     
  
     
     // Set log rotation, timeout and timestamps in the console
@@ -36,19 +38,26 @@ pipeline {
   
     stages {
         
+               
      
         stage("Clean the workspace") {
-        
-       
-           
+          
             steps {
-                cleanWs()
+                echo "============ featur branch!==============="
                 echo "checkout the code: branche ${BRANCH_NAME}"
-               checkout scm                 
-              //  git credentialsId: 'c383b28a-df5a-4c18-9092-64a79fd1678b', url: 'https://github.com/godsake/dashboard'
+                cleanWs()
+
+                // detect branch type (master, develop, feature or release)
+             
+
                 
-            }         
-        }
+
+              
+                checkout scm                 
+                //  git credentialsId: 'c383b28a-df5a-4c18-9092-64a79fd1678b', url: 'https://github.com/godsake/dashboard'
+            }  
+        }         
+    
     
        
         stage("Build the code") {
@@ -70,7 +79,7 @@ pipeline {
      
      
     
-        stage("Analyse the code and deploy to Tomcat"){
+        stage("Analyse the code"){
             environment {
                 SONAR_GOAL="org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar"
                 SONAR_HOST_URL="http://stha2n924:9000"
@@ -85,9 +94,9 @@ pipeline {
             steps {
                 parallel(
                   
-                    deploy: {
-                        echo "deploy to tomcat"
-                        sh 'mvn tomcat7:redeploy'
+                    deploy: {                     
+                        echo "bypass deploy to tomcat"
+                        // sh 'mvn tomcat7:redeploy'                     
                     },
                     Sonar: {
                                 
@@ -105,7 +114,18 @@ pipeline {
             }
         }
     
-      
+        stage('deploy feature to Tomcat'){
+            when {
+                expression {   return BRANCH_NAME.contains('feature/')}
+            } 
+                        
+            steps{
+                echo "deploy to tomcat"
+                sh "mvn tomcat7:redeploy -Dmaven.tomcat.path=/${BRANCH_NAME}" //  .replace('feature/','/f').replace('_','')}"  
+            
+            }
+        
+        }
         stage("Archive Build Output Artifacts"){
           
             steps {
@@ -157,5 +177,5 @@ pipeline {
         }
     }
 
-}
 
+}
