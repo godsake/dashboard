@@ -37,18 +37,15 @@ pipeline {
     stages {
         
      
-        stage("Checkout the code") {
+        stage("Clean the workspace") {
         
-            when {
-                environment name: 'skipStage', value: 'no'
-            }
-            
+       
            
             steps {
                 cleanWs()
-                echo "checkout the code"
-                               
-                git branch:'develop',credentialsId: 'c383b28a-df5a-4c18-9092-64a79fd1678b', url: 'https://github.com/godsake/dashboard'
+                echo "checkout the code: branche ${BRANCH_NAME}"
+               checkout scm                 
+              //  git credentialsId: 'c383b28a-df5a-4c18-9092-64a79fd1678b', url: 'https://github.com/godsake/dashboard'
                 
             }         
         }
