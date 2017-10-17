@@ -3,7 +3,7 @@
     <groupId>intact.web.dashboard</groupId>
     <artifactId>dashboard</artifactId>
     <packaging>war</packaging>
-    <version>0.1.0</version>
+    <version>0.1.2</version>
     <name>DashBoard Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
@@ -90,7 +90,7 @@
                     <configuration>
                         <url>http://localhost:8181/manager/text</url>
                         <server>TomcatServer</server>
-                        <path>/${project.artifactId}</path>
+                        <!--<path>/${project.artifactId}</path>-->
                     </configuration>
                 </plugin>
             </plugins>
