@@ -68,7 +68,7 @@ pipeline {
             steps {
                 echo "Build the code"
                         
-                sh 'mvn  clean deploy org.jacoco:jacoco-maven-plugin:prepare-agent   -Dmaven.test.failure.ignore=true '
+                sh 'mvn  clean install org.jacoco:jacoco-maven-plugin:prepare-agent   -Dmaven.test.failure.ignore=true '
                 
                 
             }
