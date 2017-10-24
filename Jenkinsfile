@@ -11,7 +11,7 @@ pipeline {
     // }
     tools { 
         maven 'Maven 3.5.0' 
-        jdk 'jdk7' 
+        jdk 'jdk8' 
         //  nodejs 'nodejs_6.9.1'
         
     }   
